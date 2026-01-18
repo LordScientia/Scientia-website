@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Scientia Books — Curated reads & quick guides</title>
+<meta name="description" content="Scientia Books — curated short reads, guides and novels. Preview and order easily." />
+<link rel="icon" href="/images/favicon.png" sizes="32x32" />
+<style>
+  :root{--accent:#7c5cff;--accent-2:#00c48c;--muted:#64748b;--bg:#f7f8fb;--card:#fff;--maxw:1100px}
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:#071025;display:flex;justify-content:center;padding:30px}
+  .wrap{width:100%;max-width:var(--maxw);background:var(--card);border-radius:18px;padding:26px;box-shadow:0 20px 50px rgba(12,18,28,.06)}
+  header{display:flex;align-items:center;gap:14px}
+  .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+  .brand h1{font-size:18px;margin:0}.brand p{margin:0;color:var(--muted);font-size:12px}
+  nav{margin-left:auto;display:flex;gap:12px;align-items:center} nav a{text-decoration:none;color:var(--accent);font-weight:700;font-size:14px}
+  .hero{display:grid;grid-template-columns:1fr 360px;gap:22px;align-items:start;margin-top:18px}
+  .kicker{display:inline-block;background:linear-gradient(90deg,#eef2ff,#fff0f6);padding:6px 10px;border-radius:999px;color:var(--accent);font-weight:700;font-size:13px}
+  h2{font-size:30px;margin:12px 0 8px} p.lead{color:#475569}
+  .btn{padding:10px 14px;border-radius:12px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:10px}
+  .btn-primary{background:linear-gradient(90deg,var(--accent),#6a4bff);color:#fff}
+  .controls-bar{display:flex;gap:10px;align-items:center;margin-top:14px;flex-wrap:wrap}
+  .search{flex:1;min-width:200px;padding:12px;border-radius:12px;border:1px solid #eef2ff}
+  main{display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:18px}
+  .book-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+  .book{background:#fff;border-radius:12px;padding:12px;border:1px solid rgba(12,18,28,.04);transition:transform .22s,box-shadow .22s;cursor:pointer}
+  .book:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(12,18,28,.06)}
+  .book img{width:100%;height:260px;object-fit:cover;border-radius:10px}
+  .book h4{margin:10px 0 4px;font-size:15px} .price{font-weight:800;color:var(--accent);margin-top:8px}
+  .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(6,8,12,.6);z-index:90;padding:20px}
+  .modal.show{display:flex}.modal-card{background:#fff;border-radius:12px;padding:18px;max-width:980px;display:grid;grid-template-columns:360px 1fr;gap:18px}
+  .modal-card img{width:100%;height:520px;object-fit:cover;border-radius:12px}.close{position:absolute;right:20px;top:20px;background:#fff;border-radius:50%;width:40px;height:40px;display:grid;place-items:center;border:0;cursor:pointer}
+  .contact-card{background:#fff;padding:16px;border-radius:12px;border:1px solid rgba(12,18,28,.04)}
+  input,textarea,select{width:100%;padding:10px;border-radius:10px;border:1px solid #eef2ff;margin-top:6px;font-size:14px}
+  button[type="submit"]{background:linear-gradient(90deg,var(--accent),#5f45ff);color:#fff;border:0;padding:12px 16px;border-radius:10px;font-weight:700;margin-top:10px;cursor:pointer}
+  footer{margin-top:22px;color:#64748b;font-size:13px;text-align:center}
+  @media(max-width:1000px){.hero{grid-template-columns:1fr}} @media(max-width:700px){.book img{height:220px}.modal-card{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo" aria-hidden>SB</div>
+    <div class="brand"><h1>Scientia Books</h1><p>Curated short reads & practical guides</p></div>
+    <nav aria-label="Main nav"><a href="#books" onclick="scrollToId('books')">Books</a><a href="#about" onclick="scrollToId('about')">About</a><a href="#contact" onclick="scrollToId('contact')">Contact</a></nav>
+  </header>
+
+  <section class="hero" id="top" style="margin-top:18px">
+    <div class="hero-left">
+      <span class="kicker">New — Quick guides</span>
+      <h2>Books that teach fast and stick.</h2>
+      <p class="lead">Quick reads, practical lessons, and short stories you can finish in an evening. Preview inside — order securely.</p>
+      <div style="margin-top:12px"><a class="btn btn-primary" href="mailto:contact@scientia.inc?subject=Sample%20Request">Request a sample</a><a class="btn btn-ghost" href="https://wa.me/23324xxxxxxxx" target="_blank" rel="noopener" style="margin-left:8px">Order via WhatsApp</a></div>
+      <div class="controls-bar" style="margin-top:14px"><input id="search" class="search" placeholder="Search title, author or category" aria-label="Search books"><select id="filter" class="filter" aria-label="Filter by category"><option value="">All categories</option><option>Fiction</option><option>Non-fiction</option><option>Guide</option><option>Short stories</option></select></div>
+    </div>
+    <aside class="hero-right" style="padding-top:8px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="padding:12px;border-radius:10px;background:linear-gradient(90deg,#fff,#fbfbff)"><div style="font-size:13px;color:var(--muted)">Catalog</div><div id="countTotal" style="font-weight:800;font-size:18px">0</div></div>
+        <div style="padding:12px;border-radius:10px;background:linear-gradient(90deg,#fff,#fbfbff)"><div style="font-size:13px;color:var(--muted)">Featured</div><div style="margin-top:8px"><strong id="featuredTitle">—</strong></div><div style="margin-top:8px"><a href="#" style="color:var(--accent);text-decoration:none" id="featuredPreview">Preview →</a></div></div>
+      </div>
+    </aside>
+  </section>
+
+  <main>
+    <section id="books" style="margin-top:18px"><div class="book-grid" id="bookGrid" aria-live="polite"></div></section>
+    <aside style="width:360px;margin-left:18px">
+      <div class="contact-card" id="contact">
+        <h3>Contact & orders</h3>
+        <p style="color:var(--muted)">Email: <a href="mailto:contact@scientia.inc">contact@scientia.inc</a></p>
+        <p style="color:var(--muted)">WhatsApp: <a href="https://wa.me/23324xxxxxxxx" target="_blank" rel="noopener">+233 24 xxx xxxx</a></p>
+        <h4 style="margin-top:12px;margin-bottom:6px">Place an order</h4>
+        <form name="order" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="order"><p style="display:none"><label>Don’t fill: <input name="bot-field"></label></p>
+          <label for="book_id">Book ID (eg. b1)</label><input id="book_id" name="book_id" placeholder="b1" required>
+          <label for="buyer_name" style="margin-top:8px">Your name</label><input id="buyer_name" name="name" required>
+          <label for="buyer_email" style="margin-top:8px">Email</label><input id="buyer_email" name="email" type="email" required>
+          <label for="buyer_whatsapp" style="margin-top:8px">WhatsApp (optional)</label><input id="buyer_whatsapp" name="whatsapp" placeholder="+23324xxxxxxx">
+          <label for="amount" style="margin-top:8px">Amount</label><input id="amount" name="amount" placeholder="GHS 50" required>
+          <label style="margin-top:8px">Payment method</label><select name="payment_method"><option>PayPal</option><option>WhatsApp</option></select>
+          <label style="margin-top:8px">Delivery / notes</label><textarea name="notes" rows="2"></textarea>
+          <button type="submit">Send order</button>
+        </form>
+        <p style="font-size:13px;color:var(--muted);margin-top:10px">Orders show in Netlify → Forms after a submission.</p>
+      </div>
+    </aside>
+  </main>
+
+  <div class="about" id="about" style="margin-top:18px"><h3>About</h3><p style="color:#475569">Scientia Books curates short, practical reads and stories. Each listing has a preview and a straightforward order flow for easy purchases.</p></div>
+  <div class="testimonials" id="testimonials" style="margin-top:18px"><h3>Readers</h3><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:12px"><div style="background:#fff;padding:12px;border-radius:10px">"Concise and useful — highly recommended."</div><div style="background:#fff;padding:12px;border-radius:10px">"Great previews, easy to choose."</div></div></div>
+  <footer>© <span id="year"></span> Scientia Books — Launch ready</footer>
+</div>
+
+<div id="modal" class="modal" aria-hidden="true" role="dialog"><div class="modal-card" role="document"><img id="modal-cover" src="" alt="Book cover"><div><h3 id="modal-title"></h3><p id="modal-author" style="color:var(--muted);margin-top:8px"></p><p id="modal-desc" style="margin-top:12px;color:#071025"></p><p id="modal-meta" style="margin-top:12px;color:var(--muted)"></p><div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap"><a id="modal-buy" class="btn btn-primary" target="_blank" rel="noopener">Buy</a><a id="modal-whatsapp" class="btn btn-ghost" target="_blank" rel="noopener">Order on WhatsApp</a><a id="modal-preview" class="btn btn-ghost" target="_blank" rel="noopener">Preview</a></div></div><button class="close" aria-label="Close" id="closeModal">✕</button></div></div>
+
+<script>
+/* Book data - edit titles, images, price, buy, whatsapp */
+const BOOKS = [
+  {id:'b1',title:'Quick Habits',author:'A. Writer',cover:'images/book1.jpg',short:'Tiny actions, big results.',long:'Quick Habits is a short book with practical daily actions that compound into real change.',category:'Non-fiction',price:'GHS 50',buy:'https://www.paypal.me/YourName/5',whatsapp:'https://wa.me/23324xxxxxxxx?text=I%20want%20to%20order%20Quick%20Habits%20(b1)'},
+  {id:'b2',title:'Island Stories',author:'M. Storyteller',cover:'images/book2.jpg',short:'A collection of short fiction.',long:'Island Stories collects short tales of loss, joy and discovery — bite-sized reads for evenings.',category:'Short stories',price:'GHS 45',buy:'https://www.paypal.me/YourName/4.5',whatsapp:'https://wa.me/23324xxxxxxxx?text=I%20want%20to%20order%20Island%20Stories%20(b2)'},
+  {id:'b3',title:'Build Apps Fast',author:'Scientia Team',cover:'images/book3.jpg',short:'Practical guide to MVPs.',long:'Step-by-step guide for launching minimum viable products with examples and checklists.',category:'Guide',price:'GHS 80',buy:'https://www.paypal.me/YourName/8',whatsapp:'https://wa.me/23324xxxxxxxx?text=I%20want%20to%20order%20Build%20Apps%20Fast%20(b3)'}
+];
+
+const grid = document.getElementById('bookGrid'); const countTotal = document.getElementById('countTotal'); const featuredTitle = document.getElementById('featuredTitle'); const featuredPreview = document.getElementById('featuredPreview'); const yearEl = document.getElementById('year'); yearEl.textContent = new Date().getFullYear();
+
+function render(list){ grid.innerHTML=''; countTotal.textContent=list.length; if(!list.length){ grid.innerHTML='<div style=\"grid-column:1/-1;color:#94a3b8;text-align:center;padding:18px\">No books found.</div>'; return; } list.forEach(b=>{ const el=document.createElement('div'); el.className='book'; el.tabIndex=0; el.innerHTML=`<img src="${escape(b.cover)}" alt="${escape(b.title)} cover" onerror="this.src='https://picsum.photos/seed/${encodeURIComponent(b.id)}/800/1200'"><h4>${escape(b.title)}</h4><p>${escape(b.author)}</p><div class="meta">${escape(b.category)}</div><div class="price">${escape(b.price)}</div>`; el.addEventListener('click',()=>openModal(b.id)); el.addEventListener('keypress',e=>{ if(e.key==='Enter') openModal(b.id)}); grid.appendChild(el); }); if(list[0]){ featuredTitle.textContent=list[0].title + ' — ' + list[0].author; featuredPreview.href=list[0].preview || '#'; } }
+render(BOOKS);
+const modal=document.getElementById('modal');
+function openModal(id){ const b=BOOKS.find(x=>x.id===id); if(!b) return; document.getElementById('modal-cover').src=b.cover||''; document.getElementById('modal-title').textContent=b.title; document.getElementById('modal-author').textContent='by ' + b.author + ' · ' + b.price; document.getElementById('modal-desc').textContent=b.long; document.getElementById('modal-meta').textContent='Category: ' + b.category; document.getElementById('modal-buy').href=b.buy||'#'; document.getElementById('modal-whatsapp').href=b.whatsapp||'#'; document.getElementById('modal-preview').href=b.preview||'#'; modal.classList.add('show'); modal.setAttribute('aria-hidden','false'); }
+function closeModal(){ modal.classList.remove('show'); modal.setAttribute('aria-hidden','true'); }
+document.getElementById('closeModal')?.addEventListener('click', closeModal);
+document.getElementById('modal').addEventListener('click', e=>{ if(e.target===document.getElementById('modal')) closeModal(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+
+const search=document.getElementById('search'), filter=document.getElementById('filter');
+search.addEventListener('input',apply); filter.addEventListener('change',apply);
+function apply(){ const q=search.value.trim().toLowerCase(); const cat=filter.value; const out=BOOKS.filter(b=>{ const text=(b.title + ' ' + b.author + ' ' + b.short + ' ' + b.long + ' ' + b.category + ' ' + b.price).toLowerCase(); return (!q || text.includes(q)) && (!cat || b.category === cat); }); render(out); }
+function scrollToId(id){ document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'}); }
+function escape(s){ return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+</script>
+</body>
+</html>
